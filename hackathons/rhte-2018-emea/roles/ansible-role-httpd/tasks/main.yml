@@ -17,8 +17,8 @@
 # Error 1. Typo in the variable
 - name: Create apache_version variable.
   set_fact:
-    apache_version: "{{ _apache_version_XX.stdout.split()[2].split('/')[1] }}"
-    #apache_version: "{{ _apache_version.stdout.split()[2].split('/')[1] }}"
+    #apache_version: "{{ _apache_version_XX.stdout.split()[2].split('/')[1] }}"
+    apache_version: "{{ _apache_version.stdout.split()[2].split('/')[1] }}"
 
 - include_vars: apache-22.yml
   when: "apache_version.split('.')[1] == '2'"
@@ -35,5 +35,5 @@
     name: "{{ apache_service }}"
     state: "{{ apache_state }}"
     enabled: yes
-  become: false
-#  become: true
+#  become: false
+  become: true
